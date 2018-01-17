@@ -1,8 +1,7 @@
 /*
-This program is trying to get the MTF value from
-a raw picture file. Through getting the max and
-min gray value, this program can use the equation,
-MTF=(max-min)/(max+min),to get the MTF value.
+This program can read from the raw file and then 
+write into the txt file with the star gray value 
+and its postion information.
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,10 +23,10 @@ int main()
     char path[256];
 
     int i,j,k;
-    int min,max;    //Ñ¡È¡Í¾ÖĞ×î´ó¼°×îĞ¡µÄ»Ò¶ÈÖµ
-    int sum;        //»Ò¶ÈÖµµÄ×ÜºÍ
-    int num;        //ÏñËØÊı
-    double mtf;     //MTF£¬´«µİº¯ÊıÖµ
+    int min,max;    //é€‰å–é€”ä¸­æœ€å¤§åŠæœ€å°çš„ç°åº¦å€¼
+    int sum;        //ç°åº¦å€¼çš„æ€»å’Œ
+    int num;        //åƒç´ æ•°
+    double mtf;     //MTFï¼Œä¼ é€’å‡½æ•°å€¼
     double average; //the average of all the pixels
 
     sum=0;
@@ -57,7 +56,7 @@ int main()
         {
             fread( ptr, 1, 1, fp );
             if(*ptr>0){
-                B[i][j]= *ptr;  // °ÑÍ¼ÏñÊäÈëµ½2Î¬Êı×éÖĞ,±ä³É¾ØÕóĞÍÊ½
+                B[i][j]= *ptr;  // æŠŠå›¾åƒè¾“å…¥åˆ°2ç»´æ•°ç»„ä¸­,å˜æˆçŸ©é˜µå‹å¼
                 num++;
                 fprintf(fptr,"%d %d %d\n", B[i][j],i,j);
 
